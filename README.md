@@ -1,60 +1,53 @@
-# Identity Smart Contract
+# NFT Metadata
+
+# CryptoPoops Smart Contract
 
 ## Overview
 
-This repository contains the source code for an Identity smart contract, designed to manage user profiles on the blockchain. The contract provides functionality for creating and retrieving user profiles.
+The `CryptoPoops` smart contract is an implementation of a non-fungible token (NFT) on the Flow blockchain. It extends the `NonFungibleToken` contract and introduces additional functionality for managing collections of unique tokens.
 
 ## Table of Contents
 
 - [Features](#features)
-- [Structure](#structure)
-- [Transaction Code](#transaction-code)
-- [Script Code](#script-code)
+- [Smart Contract Structure](#smart-contract-structure)
+- [Public Functions](#public-functions)
 - [Usage](#usage)
-
-## Structure
-
-### User Profile
-
-The contract defines a `UserProfile` structure with the following properties:
-
-- `displayName` (String): The display name of the user.
-- `bio` (String): A brief biography or description.
-- `birthdate` (String): The user's birthdate.
-- `walletAddress` (Address): The associated wallet address.
+- [Installation](#installation)
+- [License](#license)
 
 ## Features
 
-- **User Profile Creation**: Users can create profiles with a display name, bio, birthdate, and associated wallet address.
-- **Profile Retrieval**: Retrieve user profiles based on account addresses.
+- **Non-Fungible Tokens (NFTs):** Supports the creation, transfer, and management of unique tokens.
+- **Collections:** Allows users to organize and manage collections of NFTs.
+- **Public Accessibility:** Provides functions for public access to NFT metadata.
 
-## Transaction Code
+## Smart Contract Structure
 
-### Create User Profile
+The `CryptoPoops` contract structure includes NFTs, Collections, a Minter resource, and relevant initialization logic.
 
-```cadence
-import Identity from 0x06
+## Public Functions
 
-transaction(displayName: String, bio: String, birthdate: String, walletAddress: Address) {
+### `getNFTMetadataByID(id: UInt64): CryptoPoops.NFT`
 
-    prepare(signer: AuthAccount) {}
+This function allows anyone to retrieve the metadata of a CryptoPoops NFT based on its ID.
 
-    execute {
-        Identity.createUserProfile(displayName: displayName, bio: bio, birthdate: birthdate, walletAddress: walletAddress)
-        log("User profile created successfully.")
-    }
-}
-```
+## Usage
 
-## Script Code
+To use the CryptoPoops smart contract, follow the deployment and interaction steps outlined in the [Installation](#installation) section.
 
-### Create User Profile
+## Installation
 
-```cadence
-import Identity from 0x06
+1. **Deploy the Contract:**
 
-pub fun main(account: Address): Identity.UserProfile {
-    return Identity.userProfiles[account]!
-}
+   - Deploy the CryptoPoops smart contract on the Flow blockchain.
 
-```
+2. **Initialize Collections:**
+
+   - Initialize collections and mint NFTs using the provided functions.
+
+3. **Interact with Public Functions:**
+   - Users can interact with the `getNFTMetadataByID` function to retrieve NFT metadata.
+
+## License
+
+This project is licensed under the MIT License
